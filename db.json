@@ -1,0 +1,124 @@
+{
+  "electronics": [
+    { 
+      "image":"https://m.media-amazon.com/images/I/61QXCkshDOS._SL1500_.jpg",
+      "name" : "Smart-Watch", 
+      "price" : "₹4,233", 
+      "details":[
+          "Premium look and high durability with Aluminum Alloy case & Corning Gorilla Glass 3",
+          "3.3cm (1.3 inch) TFT-LCD Touchscreen with Auto-Brightness adjustment",
+          "360x360 pixels resolution with up to 600 nits Brightness",
+          "Continous Heart Rate Monitor & Blood Oxygen (SpO2) Monitor"
+      ],
+      "id" : 1 
+  },
+  { 
+      "image":"https://m.media-amazon.com/images/I/81Xjef5HFZL._AC_SX960_SY720_.jpg",
+      "name" : "Lenovo Tab", 
+      "price" : "₹11,999", 
+      "details":[
+          "5MP primary camera and 2MP front facing camera",
+          "25.65 centimeters (10.1-inch) capacitive touchscreen with 1280 x 800 pixels resolution",
+          "Android Pie operating system with 2GHz Qualcomm Snapdragon 429 quad core processor, 2GB RAM, 32GB internal memory expandable up to 256GB and single SIM",
+          "4850mAH lithium-ion battery"
+      ],
+      "id" : 2 
+  },
+  {
+      "image":"https://m.media-amazon.com/images/I/71bJqS8ZLTL._SL1500_.jpg",
+      "name" : "Laptop", 
+      "price" : "₹41,999",
+      "details":[
+          "Processor: 11th Gen Intel Core i3-1115G4 (up to 4.1 GHz with Intel Turbo Boost Technology, 6 MB L3 cache, 2 cores)",
+          "Memory: 8 GB DDR4-2666 SDRAM (2 x 4 GB), upgradable up to 16 GB (2 x 8 GB) | Storage: 256 GB PCIe NVMe M.2 SSD",
+          "Display: 14-Inch (35.6 cm) FHD IPS micro-edge, 250 nits, 45% NTSC (1920 x 1080)",
+          "Operating System & Software: Pre-loaded Windows 10 Home with lifetime validity | Pre-installed Microsoft Office Home & Student 2019, Alexa Built-in"
+      ],
+      "id" : 3 
+  },
+  { 
+      "image":"https://m.media-amazon.com/images/I/71pfYtV2upL._SL1500_.jpg",
+      "name" : "Refrigerator", 
+      "price": "₹36,290", 
+      "details":[
+          "Frost Free, Double Door: auto defrost to stop ice-build up",
+          "Capacity 345 liters: suitable for families with 2 to 3 members and bachelors.Deodorizer : Yes",
+          "Energy rating 3 Star : high Energy Efficiency",
+          "Digital Inverter Compressor : automatic adjustment of speed in response to cooling demand, quieter operation and uses less power"
+      ],
+      "id" : 4 
+  },
+  { 
+      "image":"https://m.media-amazon.com/images/I/61WKnlPcilL._SL1500_.jpg",
+      "name" : "Head Phones", 
+      "price": "₹1,199", 
+      "details":[
+          "Premium HD Sound Quality: Fill your senses with the pleasure of pure ethereal sound because the boAt 100 Wireless carries dynamic 10mm drivers that can even capture pin drop silences.",
+          "IPX4 Sweat and Water Resistant: So what are you waiting for? Hit the road with the safe and secure freestyle vibe brought to you by earphones that fears none of the dangers, ride into the wild",
+          "Up to 30 Hours of Audio Bliss: Its made to ensure that audio bliss accompanies you throughout the day powered by a 320mAh Rechargeable Lithium Battery. Charging Time - 2 hours",
+          "Sleek & Adaptive Design: Enter the threshold of style with a simple and ergonomic on neck design with capped Earbuds for a comfort fit experience, execute like a boss with the boAt Wireless 100"
+      ],
+      "id" : 5 
+  },
+  { 
+      "image":"https://m.media-amazon.com/images/I/71QT7dSK4BL._SL1500_.jpg",
+      "name" : "Smart Phone", 
+      "price": "₹20,999", 
+      "details":[
+          "MediaTek | Dimensity 720 Octa Core 2GHz Processor with the widest 12 band support for a True 5G experience",
+          "16.55 centimeters (6.5-inch) TFT - Infinity V-cut display, HD+ resolution, 720 X 1600 pixels protected by Gorilla Glass 5",
+          "Versatile Quad camera setup-48MP (F 1.8) main camera + 8MP (F2.2) Ultra wide camera+ 5MP (F2.4) depth camera + 2MP (2.4) Macro Camera| 13MP (F2.2) front camera",
+          "Monster 5000 mAh Battery | Memory, Storage & SIM: 6GB RAM | 128GB internal memory expandable up to 1TB| SIM 1 + Hybrid (SIM or MicroSD)"
+      ],
+      "id" : 6 
+  },
+  { 
+      "image":"https://m.media-amazon.com/images/I/716KY1d-2vL._SL1500_.jpg",
+      "name" : "Washing Machine", 
+      "price": "₹36,990", 
+      "details":[
+          "Fully-automatic front load washing machine: best wash quality, energy and water efficient",
+          "Capacity 8 kg :suitable for large families",
+          "Energy rating: 5 star - best in class efficiency",
+          "1400 rpm: higher the spin speed, faster the drying time"
+      ],
+      "id" : 7 
+  },
+  { 
+      "image":"https://m.media-amazon.com/images/I/81wx0ua+yCL._SL1500_.jpg",
+      "name" : "Microwave Oven", 
+      "price": "₹12,999", 
+      "details":[
+          "Convection: Can be used for baking along with grilling, reheating, defrosting and cooking",
+          "Slimfry technology : Enjoy healthier fried food without deep fryer. Turntable Size : 318 mm",
+          "Control: Touch Key Pad (Membrane) is sensitive to touch and easy to clean",
+          "Child Lock: Ensures complete safety especially for homes with small children"
+      ],
+      "id" : 8 
+  },
+  { "image":"https://m.media-amazon.com/images/I/61s86BzQP2L._SL1500_.jpg",
+      "name" : "SoundBar", 
+      "price": "₹7,999", 
+      "details":[
+          "Its 2.1 Channel captivating sound with Dolby Digital / Digital Plus technology gets you set for an alternate dimension, with an ethereal sound quality that adds colour to your audio as well as visual experience.",
+          "The sleek and premium styled soundbar adds to the beauty of your home as much as it adds to the immersive auditory experience",
+          "Control your playback via easy operational controls and the master remote control device",
+          "All your devices are made accessible by the wireless and wired forms of connectivity, such as Bluetooth V5.0/AUX/USB/Optical and HDMI(ARC) with the versatile Aavante 1700D"
+      ],
+      "id" : 9 
+  },
+  { 
+      "image":"https://m.media-amazon.com/images/I/61N44JgNZjL._SL1500_.jpg",
+      "name" : "Air Conditioner", 
+      "price": "₹32,990", 
+      "details":[
+          "Split AC with inverter compressor: Variable speed compressor which adjusts power depending on heat load. 5 modes to choose within different tonnages for different cooling needs.",
+          "Split AC: 1.5 ton Suitable for medium sized rooms (111 to 150 sq ft)",
+          "Energy Rating: 3 Star | Annual Energy Consumption 1044.19 Units per year | ISSER Value: 3.71",
+          "Copper Condenser Coil: Better cooling and requires low maintenance"
+      ],
+      "id" : 10 
+  }
+  ],
+  "furniture": []
+}
