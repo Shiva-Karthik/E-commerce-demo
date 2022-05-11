@@ -15,8 +15,17 @@ const colors = {
     700: "#2a69ac",
   },
 };
+const breakpoints = {
+  sm: '320px',
+  md: '768px',
+  lg: '960px',
+  xl: '1200px',
+  '2xl': '1536px',
+}
 
-const theme = extendTheme({ colors });
+// 3. Extend the theme
+// const theme = extendTheme({  })
+const theme = extendTheme({ colors, breakpoints });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

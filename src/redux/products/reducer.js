@@ -18,8 +18,8 @@ export const productReducer = (store = initState, { type, payload }) => {
   switch (type) {
     case GET_PRODUCTS:
       return { ...store, products: payload, loading: false, error: false  };
-    // case GET_SINGLE_PRODUCTS:
-    //   return { ...store, products: payload, loading: false, error: false };
+    case GET_SINGLE_PRODUCTS:
+      return { ...store, products: payload, loading: false, error: false };
     // case POST_PRODUCTS:
     // case PATCH_PRODUCTS:
     // case DELETE_PRODUCTS:

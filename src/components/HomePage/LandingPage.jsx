@@ -3,12 +3,30 @@ import { Box, IconButton, useBreakpointValue } from "@chakra-ui/react";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import Slider from "react-slick";
 import { useState } from "react";
-import { Grid, GridItem } from "@chakra-ui/react";
 import { useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductsData } from "../../redux/products/action";
 import { ProductCard } from "../Cards/ProductCard";
+import { Heading } from '@chakra-ui/react'
+import { Grid, GridItem } from "@chakra-ui/react";
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  Button,
+  MenuItem,
+  MenuItemOption,
+  MenuGroup,
+  MenuOptionGroup,
+  MenuDivider,
+  Spinner,
+  Center,
+  Input,
+  Flex,
+  Select,
+} from "@chakra-ui/react";
+
 
 const settings = {
   dots: true,
@@ -25,12 +43,15 @@ const settings = {
 const LandingPage = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((store) => store.products);
+  const [filterState, setFilterState] = useState({ parameter: "", value: "" });
+  const [query, setQuery] = useState("");
   const [slider, setSlider] = useState(React.useState < Slider);
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "10px" });
   const cards = [
     "https://m.media-amazon.com/images/I/61gK+CJQnjL._SX3000_.jpg",
     "https://m.media-amazon.com/images/I/61od7gDIFEL._SX3000_.jpg",
+    "https://m.media-amazon.com/images/I/61xeNFULzML._SX3000_.jpg"
   ];
   console.log("lp", products);
 
@@ -40,8 +61,13 @@ const LandingPage = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  const handleSort = (parameter, value) => {
+    setFilterState({ parameter: parameter, value: value });
+  };
+
   return (
-    <>
+    <Box>
       <Box
         position={"relative"}
         height={"600px"}
@@ -103,9 +129,19 @@ const LandingPage = () => {
           ))}
         </Slider>
       </Box>
-      <Box p="4%">
+      <Box>
+      <Heading>Top Picks</Heading>
+      
+          {/* <Input
+            id="myInput"
+            // onChange={(e) => tyPing(e)}
+            placeholder="Filter by Name"
+            htmlSize={10}
+            width="auto"
+            onChange={(e) => setQuery(e.target.value)}
+          /> */}
         <Grid templateColumns="repeat(3, 1fr)">
-          {products.map((e, i) => {
+          {products.length && products.map((e, i) => {
             return (
               <GridItem>
                 <ProductCard
@@ -119,7 +155,7 @@ const LandingPage = () => {
           })}
         </Grid>
       </Box>
-    </>
+    </Box>
   );
 };
 
