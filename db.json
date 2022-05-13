@@ -122,5 +122,32 @@
     }
   ],
   "furniture": [],
-  "cart": []
+  "cart": [
+    {
+      "image": "https://m.media-amazon.com/images/I/81Xjef5HFZL._AC_SX960_SY720_.jpg",
+      "name": "Lenovo Tab",
+      "price": 11999,
+      "details": [
+        "5MP primary camera and 2MP front facing camera",
+        "25.65 centimeters (10.1-inch) capacitive touchscreen with 1280 x 800 pixels resolution",
+        "Android Pie operating system with 2GHz Qualcomm Snapdragon 429 quad core processor, 2GB RAM, 32GB internal memory expandable up to 256GB and single SIM",
+        "4850mAH lithium-ion battery"
+      ],
+      "id": 2,
+      "qty": 2
+    },
+    {
+      "image": "https://m.media-amazon.com/images/I/71bJqS8ZLTL._SL1500_.jpg",
+      "name": "Laptop",
+      "price": 41999,
+      "details": [
+        "Processor: 11th Gen Intel Core i3-1115G4 (up to 4.1 GHz with Intel Turbo Boost Technology, 6 MB L3 cache, 2 cores)",
+        "Memory: 8 GB DDR4-2666 SDRAM (2 x 4 GB), upgradable up to 16 GB (2 x 8 GB) | Storage: 256 GB PCIe NVMe M.2 SSD",
+        "Display: 14-Inch (35.6 cm) FHD IPS micro-edge, 250 nits, 45% NTSC (1920 x 1080)",
+        "Operating System & Software: Pre-loaded Windows 10 Home with lifetime validity | Pre-installed Microsoft Office Home & Student 2019, Alexa Built-in"
+      ],
+      "id": 3,
+      "qty": 4
+    }
+  ]
 }

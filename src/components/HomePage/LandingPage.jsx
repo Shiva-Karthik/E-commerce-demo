@@ -148,6 +148,7 @@ const LandingPage = () => {
                   name={e.name}
                   price={e.price}
                   image={e.image}
+                  id={e.id}
                 />
             );
           })}

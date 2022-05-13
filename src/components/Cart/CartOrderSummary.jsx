@@ -13,6 +13,7 @@ import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import { formatPrice } from './PriceTag'
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const OrderSummaryItem = (props) => {
   const { label, value, children } = props
@@ -27,6 +28,7 @@ const OrderSummaryItem = (props) => {
 }
 
 export const CartOrderSummary = () => {
+  const navigate = useNavigate()
   const {cart} = useSelector((store) => store.cart);
   const [totalPrice, setTotalPrice] = useState(0);
   useEffect(() => {
@@ -62,7 +64,7 @@ export const CartOrderSummary = () => {
           </Text>
         </Flex>
       </Stack>
-      <Button colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />}>
+      <Button onClick={()=>{navigate("/checkout")}} colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />}>
         Checkout
       </Button>
     </Stack>

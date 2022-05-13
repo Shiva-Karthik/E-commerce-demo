@@ -3,7 +3,7 @@ import {
   Flex,
   Heading,
   HStack,
-  Link,
+  // Link,
   Stack,
   useColorModeValue as mode,
 } from "@chakra-ui/react";
@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { CartItem } from "./CartItem";
 import { CartOrderSummary } from "./CartOrderSummary";
 import { getDataFromCart } from "../../redux/cart/action";
+import { Link } from "react-router-dom";
 
 export const CartPage = () => {
   const dispatch = useDispatch();
@@ -81,7 +82,7 @@ export const CartPage = () => {
           <HStack mt="6" fontWeight="semibold">
             <p>or</p>
             {/* <Link to={"/category/electronics"} > */}
-            <Link href={"/category/electronics"} color={mode("blue.500", "blue.200")} >Continue shopping</Link>
+            <Link to={"/category/electronics"} ><p style={{color: "blue.200"}}>Continue shopping</p></Link>
           </HStack>
         </Flex>
       </Stack>
