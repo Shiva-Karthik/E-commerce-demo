@@ -1,12 +1,3 @@
-// import React from 'react'
-
-// const ElectronicsProductPage = () => {
-//   return (
-//     <div>ElectronicProductPage</div>
-//   )
-// }
-
-// export default ElectronicProductPage
 
 import {
   Box,
@@ -25,30 +16,46 @@ import {
   VisuallyHidden,
   List,
   ListItem,
+  useToast,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { MdLocalShipping } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { getSingleProductsData } from "../../redux/products/action";
+import {getSingleProductsData } from "../../redux/products/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { addDataToCart, addToCart } from "../../redux/cart/action";
+
 
 const ElectronicsProductPage = () => {
   // const [details, setDetails] = useState([]);
+  const {cart} = useSelector((store) => store.products)
+  console.log('cart:', cart)
+  const toast = useToast();
+  const statuses = ["success"];
 
   const dispatch = useDispatch();
   const { id } = useParams();
   const { products } = useSelector((store) => store.products);
-  console.log(products.details);
+  console.log('productssing:', products)
 
-  useEffect(() => {
-    // setDetails(products.details);
-    getData();
-  }, []);
   const getData = () => {
     dispatch(getSingleProductsData(id));
+    
   };
+
+
+  const addCart = (products) => {
+    dispatch(addDataToCart(products));
+  };
+
+  useEffect(() => {
+    getData();
+    // dispatch(addToCart(id))
+  }, []);
   return (
     <Container maxW={"7xl"}>
       <SimpleGrid
@@ -95,17 +102,6 @@ const ElectronicsProductPage = () => {
               />
             }
           >
-            {/* <VStack spacing={{ base: 4, sm: 6 }}>
-              <Text
-                color={useColorModeValue("gray.500", "gray.400")}
-                fontSize={"2xl"}
-                fontWeight={"300"}
-              >
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore
-              </Text>
-              <Text fontSize={"lg"}>{products.details}</Text>
-            </VStack> */}
             <Box>
               <Text
                 fontSize={{ base: "16px", lg: "18px" }}
@@ -118,7 +114,7 @@ const ElectronicsProductPage = () => {
               </Text>
 
               <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
-              <Text fontSize={"lg"}>{products.details}</Text>
+                <Text fontSize={"lg"}>{products.details}</Text>
               </SimpleGrid>
             </Box>
             <Box>
@@ -180,7 +176,16 @@ const ElectronicsProductPage = () => {
             </Box>
           </Stack>
 
+      
           <Button
+          onClick={() =>
+            {addCart(products);
+            toast({
+              title: "Item added to cart",
+              status: "success",
+              isClosable: true,
+            })}
+          }
             rounded={"none"}
             w={"full"}
             mt={8}

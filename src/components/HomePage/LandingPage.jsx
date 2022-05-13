@@ -143,14 +143,12 @@ const LandingPage = () => {
         <Grid templateColumns="repeat(3, 1fr)">
           {products.length && products.map((e, i) => {
             return (
-              <GridItem>
                 <ProductCard
                   key={e.id}
                   name={e.name}
                   price={e.price}
                   image={e.image}
                 />
-              </GridItem>
             );
           })}
         </Grid>

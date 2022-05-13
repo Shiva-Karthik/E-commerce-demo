@@ -8,19 +8,13 @@ import {
   Icon,
   chakra,
   Tooltip,
+  Button,
 } from "@chakra-ui/react";
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
-
-const data = {
-  isNew: true,
-  imageURL:
-    "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=4600&q=80",
-  name: "Wayfarer Classic",
-  price: 4.5,
-  rating: 4.2,
-  numReviews: 34,
-};
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { addDataToCart, addToCart } from "../../redux/cart/action";
 
 function Rating({ rating, numReviews }) {
   return (
@@ -50,7 +44,13 @@ function Rating({ rating, numReviews }) {
   );
 }
 
-export const ProductCard = ({ id, image, name, price }) => {
+export const ProductCard = ({ id, image, name, price, e }) => {
+  const dispatch = useDispatch();
+  const addCart = (el) => {
+    console.log('el:', el)
+    // dispatch(addToCart(e))
+    dispatch(addDataToCart(el));
+  };
   return (
     <Flex p={50} w="full" alignItems="center" justifyContent="center">
       <Box
@@ -61,14 +61,16 @@ export const ProductCard = ({ id, image, name, price }) => {
         shadow="lg"
         position="relative"
       >
-        <Image
-          src={image}
-          alt={`Picture of ${data.name}`}
-          roundedTop="lg"
-          width="290px"
-          height="300px"
-          padding="10"
-        />
+        <Link to={`/category/electronics/${id}`}>
+          <Image
+            src={image}
+            alt={`Picture of ${name}`}
+            roundedTop="lg"
+            width="290px"
+            height="300px"
+            padding="10"
+          />
+        </Link>
 
         <Box p="6">
           <Flex mt="1" justifyContent="space-between" alignContent="center">
@@ -88,8 +90,10 @@ export const ProductCard = ({ id, image, name, price }) => {
               color={"gray.800"}
               fontSize={"1.2em"}
             >
-              <chakra.a href={"#"} display={"flex"}>
-                <Icon as={FiShoppingCart} h={7} w={7} alignSelf={"center"} />
+              <chakra.a display={"flex"}>
+                <Button onClick={() => addCart(e)}>
+                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={"center"} />
+                </Button>
               </chakra.a>
             </Tooltip>
           </Flex>
@@ -100,8 +104,9 @@ export const ProductCard = ({ id, image, name, price }) => {
               numReviews={Math.floor(Math.random() * (250 - 50) + 50)}
             />
             <Box fontSize="2xl" color={useColorModeValue("gray.800", "white")}>
-              <Box as="span" color={"gray.600"} fontSize="lg">₹{price}</Box>
-              
+              <Box as="span" color={"gray.600"} fontSize="lg">
+                ₹ {price}
+              </Box>
             </Box>
           </Flex>
         </Box>
@@ -109,4 +114,4 @@ export const ProductCard = ({ id, image, name, price }) => {
     </Flex>
   );
 };
-// 
+//

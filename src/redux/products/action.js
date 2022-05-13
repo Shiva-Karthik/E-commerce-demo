@@ -10,6 +10,7 @@ export const getSingleProducts = (products) => ({ type: GET_SINGLE_PRODUCTS, pay
 export const getProductsLoading = () => ({ type: GET_PRODUCTS_LOADING });
 export const getProductsError = () => ({ type: GET_PRODUCTS_ERROR });
 
+
 export const getProductsData = () => async (dispatch) => {
   try {
     dispatch(getProductsLoading());

@@ -119,16 +119,17 @@ const Electronics = () => {
           })
           .map((e, i) => {
             return (
-              <GridItem>
-                <Link to={`/category/electronics/${e.id}`}>
+                // <Link to={`/category/electronics/${e.id}`}>
                   <ProductCard
-                    key={e.id}
+                     key={e.id}
                     name={e.name}
                     price={e.price}
                     image={e.image}
+                    id={e.id}
+                    e={e}
                   ></ProductCard>
-                </Link>
-              </GridItem>
+                  
+                // </Link>
             );
           })}
       </Grid>

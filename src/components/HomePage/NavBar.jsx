@@ -13,13 +13,21 @@ import {
   useColorMode,
   Center,
   Image,
+  Badge,
 } from "@chakra-ui/react";
 import { ChevronDownIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { BsCartFill } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
 
 const NavBar = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { colorMode, toggleColorMode } = useColorMode();
   //   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { cart } = useSelector((store) => store.cart);
+  console.log("cart:", cart);
+  console.log("navbar");
   return (
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
@@ -36,6 +44,18 @@ const NavBar = () => {
           </Link>
           <Flex alignItems={"center"} gap="2">
             <Menu>
+              <Button onClick={() => navigate("/cart")}>
+                <BsCartFill size="25" />
+                <Badge
+                  fontSize="15"
+                  variant="solid"
+                  colorScheme="blue"
+                  borderRadius="50%"
+                >
+                  {cart.length}
+                </Badge>
+              </Button>
+
               <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
                 Categories
               </MenuButton>
