@@ -122,32 +122,5 @@
     }
   ],
   "furniture": [],
-  "cart": [
-    {
-      "image": "https://m.media-amazon.com/images/I/81Xjef5HFZL._AC_SX960_SY720_.jpg",
-      "name": "Lenovo Tab",
-      "price": 11999,
-      "details": [
-        "5MP primary camera and 2MP front facing camera",
-        "25.65 centimeters (10.1-inch) capacitive touchscreen with 1280 x 800 pixels resolution",
-        "Android Pie operating system with 2GHz Qualcomm Snapdragon 429 quad core processor, 2GB RAM, 32GB internal memory expandable up to 256GB and single SIM",
-        "4850mAH lithium-ion battery"
-      ],
-      "id": 2,
-      "qty": 1
-    },
-    {
-      "image": "https://m.media-amazon.com/images/I/81FyYXoQF-L._SY445_.jpg",
-      "name": "Refrigerator",
-      "price": 36290,
-      "details": [
-        "Frost Free, Double Door: auto defrost to stop ice-build up",
-        "Capacity 345 liters: suitable for families with 2 to 3 members and bachelors.Deodorizer : Yes",
-        "Energy rating 3 Star : high Energy Efficiency",
-        "Digital Inverter Compressor : automatic adjustment of speed in response to cooling demand, quieter operation and uses less power"
-      ],
-      "id": 4,
-      "qty": 1
-    }
-  ]
+  "cart": []
 }

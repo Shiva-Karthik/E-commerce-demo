@@ -1,26 +1,16 @@
-import { Grid, GridItem, SimpleGrid } from "@chakra-ui/react";
 import {
   Menu,
   MenuButton,
   MenuList,
   Button,
-  MenuItem,
   MenuItemOption,
-  MenuGroup,
   MenuOptionGroup,
   MenuDivider,
-  Spinner,
-  Center,
-  Input,
-  Flex,
-  Select,
   Box,
-  Heading,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { getProductsData } from "../../redux/products/action";
 import { ProductCard } from "../Cards/ProductCard";
 import { ProductGrid } from "../Cards/ProductGrid";
@@ -47,7 +37,7 @@ const Electronics = () => {
 
       <Menu closeOnSelect={false}>
         <MenuButton as={Button} colorScheme="blue">
-          Sort by
+          Filter & Sort Options
         </MenuButton>
         <MenuList minWidth="240px">
           <MenuOptionGroup defaultValue="asc" title="Price" type="radio">

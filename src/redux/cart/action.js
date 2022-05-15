@@ -27,7 +27,7 @@ export const addDataToCart = (e) => async (dispatch) => {
     e.qty = 1;
     axios
       .post("http://localhost:5000/cart", e)
-      .then((res) => {
+      .then(() => {
         dispatch(addToCart());
         dispatch(getDataFromCart());
       })

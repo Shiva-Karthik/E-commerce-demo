@@ -1,25 +1,32 @@
-import { HStack, Icon, useColorModeValue } from '@chakra-ui/react'
+import { Box, HStack, Icon, useColorModeValue } from '@chakra-ui/react'
 import * as React from 'react'
+import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
 import { FaStar } from 'react-icons/fa'
 
-export const Rating = (props) => {
-  const { defaultValue = 0, max = 5, size = 'md', rootProps } = props
-  const color = useColorModeValue('gray.200', 'gray.600')
-  const activeColor = useColorModeValue('blue.500', 'blue.200')
+export const Rating = ({ rating, numReviews }) => {
   return (
-    <HStack spacing="0.5" {...rootProps}>
-      {Array.from({
-        length: max,
-      })
-        .map((_, index) => index + 1)
-        .map((index) => (
-          <Icon
-            key={index}
-            as={FaStar}
-            fontSize={size}
-            color={index <= defaultValue ? activeColor : color}
-          />
-        ))}
-    </HStack>
-  )
+    <Box d="flex" alignItems="center">
+      {Array(5)
+        .fill("")
+        .map((_, i) => {
+          const roundedRating = Math.round(rating * 2) / 2;
+          if (roundedRating - i >= 1) {
+            return (
+              <BsStarFill
+                key={i}
+                style={{ marginLeft: "1" }}
+                color={i < rating ? "teal.500" : "gray.300"}
+              />
+            );
+          }
+          if (roundedRating - i === 0.5) {
+            return <BsStarHalf key={i} style={{ marginLeft: "1" }} />;
+          }
+          return <BsStar key={i} style={{ marginLeft: "1" }} />;
+        })}
+      <Box as="span" ml="2" color="gray.600" fontSize="sm">
+        {numReviews} review{numReviews > 1 && "s"}
+      </Box>
+    </Box>
+  );
 }
