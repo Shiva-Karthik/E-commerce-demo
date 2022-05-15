@@ -1,117 +1,87 @@
 import {
-  Flex,
-  Circle,
+  AspectRatio,
   Box,
-  Image,
-  Badge,
-  useColorModeValue,
-  Icon,
-  chakra,
-  Tooltip,
   Button,
-} from "@chakra-ui/react";
-import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
-import { FiShoppingCart } from "react-icons/fi";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { addDataToCart, addToCart } from "../../redux/cart/action";
+  HStack,
+  Image,
+  Link,
+  Skeleton,
+  Stack,
+  Text,
+  useBreakpointValue,
+  useColorModeValue,
+  useToast,
+} from '@chakra-ui/react'
+import * as React from 'react'
+import { Rating } from './Rating'
+import { PriceTag } from './PriceTag'
+import { useDispatch } from 'react-redux'
+import { addDataToCart } from '../../redux/cart/action'
+import { useNavigate } from 'react-router-dom'
 
-function Rating({ rating, numReviews }) {
-  return (
-    <Box d="flex" alignItems="center">
-      {Array(5)
-        .fill("")
-        .map((_, i) => {
-          const roundedRating = Math.round(rating * 2) / 2;
-          if (roundedRating - i >= 1) {
-            return (
-              <BsStarFill
-                key={i}
-                style={{ marginLeft: "1" }}
-                color={i < rating ? "teal.500" : "gray.300"}
-              />
-            );
-          }
-          if (roundedRating - i === 0.5) {
-            return <BsStarHalf key={i} style={{ marginLeft: "1" }} />;
-          }
-          return <BsStar key={i} style={{ marginLeft: "1" }} />;
-        })}
-      <Box as="span" ml="2" color="gray.600" fontSize="sm">
-        {numReviews} review{numReviews > 1 && "s"}
-      </Box>
-    </Box>
-  );
-}
-
-export const ProductCard = ({ id, image, name, price, e }) => {
+export const ProductCard = (props) => {
+  const toast = useToast();
+  const navigate = useNavigate()
+  const { name, image, price, e, rating } = props;
   const dispatch = useDispatch();
   const addCart = (el) => {
-    console.log('el:', el)
-    // dispatch(addToCart(e))
     dispatch(addDataToCart(el));
   };
   return (
-    <Flex p={50} w="full" alignItems="center" justifyContent="center">
-      <Box
-        bg={useColorModeValue("white", "gray.800")}
-        maxW="sm"
-        borderWidth="1px"
-        rounded="lg"
-        shadow="lg"
-        position="relative"
-      >
-        <Link to={`/category/electronics/${id}`}>
+    <Stack
+      spacing={useBreakpointValue({
+        base: '4',
+        md: '5',
+      })}
+      // {...rootProps}
+    >
+      <Box position="relative">
+        <AspectRatio ratio={4 / 3}>
+        <Link onClick={()=>navigate(`/category/electronics/${e.id}`)} >
           <Image
             src={image}
-            alt={`Picture of ${name}`}
-            roundedTop="lg"
-            width="290px"
-            height="300px"
-            padding="10"
+            alt={name}
+            draggable="false"
+            fallback={<Skeleton />}
+            borderRadius={useBreakpointValue({
+              base: 'md',
+              md: 'xl',
+            })}
           />
         </Link>
-
-        <Box p="6">
-          <Flex mt="1" justifyContent="space-between" alignContent="center">
-            <Box
-              fontSize="2xl"
-              fontWeight="semibold"
-              as="h4"
-              lineHeight="tight"
-              isTruncated
-            >
-              {name}
-            </Box>
-            <Tooltip
-              label="Add to cart"
-              bg="white"
-              placement={"top"}
-              color={"gray.800"}
-              fontSize={"1.2em"}
-            >
-              <chakra.a display={"flex"}>
-                <Button onClick={() => addCart(e)}>
-                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={"center"} />
-                </Button>
-              </chakra.a>
-            </Tooltip>
-          </Flex>
-
-          <Flex justifyContent="space-between" alignContent="center">
-            <Rating
-              rating={Math.floor(Math.random() * (5 - 2) + 2)}
-              numReviews={Math.floor(Math.random() * (250 - 50) + 50)}
-            />
-            <Box fontSize="2xl" color={useColorModeValue("gray.800", "white")}>
-              <Box as="span" color={"gray.600"} fontSize="lg">
-                ₹ {price}
-              </Box>
-            </Box>
-          </Flex>
-        </Box>
+        </AspectRatio>
       </Box>
-    </Flex>
-  );
-};
-//
+      <Stack>
+        <Stack spacing="1">
+          <Text fontWeight="medium" color={useColorModeValue('gray.700', 'gray.400')}>
+            {name}
+          </Text>
+          <PriceTag price={price} currency="INR" />
+        </Stack>
+        <HStack>
+          <Rating defaultValue={rating} size="sm" />
+          <Text fontSize="sm" color={useColorModeValue('gray.600', 'gray.400')}>
+            12 Reviews
+          </Text>
+        </HStack>
+      </Stack>
+      <Stack align="center">
+        <Button colorScheme="blue" isFullWidth onClick={() => {addCart(e);toast({
+              title: "Item added to cart",
+              status: "success",
+              isClosable: true,
+            }) }}>
+          Add to cart
+        </Button>
+        <Link
+          textDecoration="underline"
+          fontWeight="medium"
+          color={useColorModeValue('gray.600', 'gray.400')}
+          onClick={()=>{navigate("/checkout");addCart(e)}}
+        >
+          Quick shop
+        </Link>
+      </Stack>
+    </Stack>
+  )
+}

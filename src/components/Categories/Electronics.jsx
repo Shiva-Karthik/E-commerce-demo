@@ -1,4 +1,4 @@
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Grid, GridItem, SimpleGrid } from "@chakra-ui/react";
 import {
   Menu,
   MenuButton,
@@ -23,6 +23,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getProductsData } from "../../redux/products/action";
 import { ProductCard } from "../Cards/ProductCard";
+import { ProductGrid } from "../Cards/ProductGrid";
 
 const Electronics = () => {
   const dispatch = useDispatch();
@@ -41,7 +42,9 @@ const Electronics = () => {
 
   return (
     <Box>
-      <Heading>Top Picks</Heading>
+      {/* <Heading>Top Picks</Heading> */}
+      <Box p={10}>
+
       <Menu closeOnSelect={false}>
         <MenuButton as={Button} colorScheme="blue">
           Sort by
@@ -86,53 +89,67 @@ const Electronics = () => {
           </MenuOptionGroup>
         </MenuList>
       </Menu>
-      {/* <Input
-            id="myInput"
-            // onChange={(e) => tyPing(e)}
-            placeholder="Filter by Name"
-            htmlSize={10}
-            width="auto"
-            onChange={(e) => setQuery(e.target.value)}
-          /> */}
-      {/* .filter((e) => e.name.toLowerCase().includes(query.toLowerCase())) */}
-      <Grid templateColumns="repeat(3, 1fr)">
-        {products.length && products
-          .sort((a, b) => {
-            if (filterState.parameter === "name" && filterState.value === 1) {
-              return a["name"].localeCompare(b["name"]);
-            } else if (
-              filterState.parameter === "name" &&
-              filterState.value === -1
-            ) {
-              return b["name"].localeCompare(a["name"]);
-            } else if (
-              filterState.parameter === "price" &&
-              filterState.value === 1
-            ) {
-              return a["price"] - b["price"];
-            } else if (
-              filterState.parameter === "price" &&
-              filterState.value === -1
-            ) {
-              return b["price"] - a["price"];
-            }
-          })
-          .map((e, i) => {
-            return (
-                // <Link to={`/category/electronics/${e.id}`}>
+      </Box>
+      
+
+      <Box
+    maxW="7xl"
+    mx="auto"
+    px={{
+      base: '4',
+      md: '8',
+      lg: '12',
+    }}
+    py={{
+      base: '6',
+      md: '8',
+      lg: '12',
+    }}
+  >
+    <ProductGrid>
+    {products.length &&
+          products
+            .sort((a, b) => {
+              if (filterState.parameter === "name" && filterState.value === 1) {
+                return a["name"].localeCompare(b["name"]);
+              } else if (
+                filterState.parameter === "name" &&
+                filterState.value === -1
+              ) {
+                return b["name"].localeCompare(a["name"]);
+              } else if (
+                filterState.parameter === "price" &&
+                filterState.value === 1
+              ) {
+                return a["price"] - b["price"];
+              } else if (
+                filterState.parameter === "price" &&
+                filterState.value === -1
+              ) {
+                return b["price"] - a["price"];
+              }
+            })
+            
+            .map((e, i) => {
+              return (
+
                   <ProductCard
-                     key={e.id}
+                    key={e.id}
                     name={e.name}
                     price={e.price}
                     image={e.image}
                     id={e.id}
                     e={e}
-                  ></ProductCard>
-                  
-                // </Link>
-            );
-          })}
-      </Grid>
+                  />
+              );
+            })}
+      {/* {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))} */}
+    </ProductGrid>
+  </Box>
+      
+        
     </Box>
   );
 };

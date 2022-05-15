@@ -1,4 +1,4 @@
-import { CloseButton, Flex, Link, Select, useColorModeValue } from '@chakra-ui/react'
+import { Button, CloseButton, Flex, Link, Select, useColorModeValue } from '@chakra-ui/react'
 import * as React from 'react'
 import { PriceTag } from './PriceTag'
 import { CartProductMeta } from './CartProductMeta'
@@ -82,13 +82,12 @@ export const CartItem = (props) => {
           md: 'none',
         }}
       >
-        <Link fontSize="sm" textDecor="underline">
-          Delete
-        </Link>
+        <Button onClick={() =>onClickDelete(id)} >Remove</Button>
         <QuantitySelect
           value={qty}
           onChange={(e) => {
             onChangeQuantity?.(+e.currentTarget.value)
+            dispatch(handleQty(+e.currentTarget.value, qty, id))
           }}
         />
         <PriceTag price={price} currency={currency} />

@@ -33,14 +33,12 @@ import { addDataToCart, addToCart } from "../../redux/cart/action";
 const ElectronicsProductPage = () => {
   // const [details, setDetails] = useState([]);
   const {cart} = useSelector((store) => store.products)
-  console.log('cart:', cart)
   const toast = useToast();
   const statuses = ["success"];
 
   const dispatch = useDispatch();
   const { id } = useParams();
   const { products } = useSelector((store) => store.products);
-  console.log('productssing:', products)
 
   const getData = () => {
     dispatch(getSingleProductsData(id));
