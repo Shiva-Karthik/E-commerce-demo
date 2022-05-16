@@ -64,9 +64,10 @@ export const CartOrderSummary = () => {
           </Text>
         </Flex>
       </Stack>
-      <Button onClick={()=>{navigate("/checkout")}} colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />}>
+      {cart.length>0 ? <Button onClick={()=>{navigate("/checkout")}} colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />}>
         Checkout
-      </Button>
+      </Button> : ""} 
+      
     </Stack>
   )
 }

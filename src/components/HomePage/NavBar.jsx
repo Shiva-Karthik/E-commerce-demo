@@ -79,7 +79,7 @@ export default function Navbar() {
           direction={'row'}
           spacing={6}>
             <Button onClick={() => navigate("/cart")} >
-                <BsCartFill />
+                <BsCartFill size={{ base:5, sm:5, lg:10 }}/>
                 <Badge
                   variant="solid"
                   colorScheme="blue"

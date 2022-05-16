@@ -3,6 +3,7 @@ import {
   Flex,
   Heading,
   HStack,
+  Image,
   // Link,
   Stack,
   useColorModeValue as mode,
@@ -66,7 +67,7 @@ export const CartPage = () => {
           flex="2"
         >
           <Heading fontSize="2xl" fontWeight="extrabold">
-            {cart.length > 0 ? "Shopping Cart" : "Your Cart is empty"}
+            {cart.length > 0 ? "Shopping Cart" : <Box><Image draggable={false} src="https://sethisbakery.com/assets/website/images/empty-cart.png"/></Box>}
           </Heading>
 
           <Stack spacing="6">
@@ -79,7 +80,7 @@ export const CartPage = () => {
         <Flex direction="column" align="center" flex="1">
           <CartOrderSummary />
           <HStack mt="6" fontWeight="semibold">
-            <p>or</p>
+            {cart.length>0?<p>or</p>:""}
             {/* <Link to={"/category/electronics"} > */}
             <Link to={"/category/electronics"} ><p style={{color: "blue.200"}}>Continue shopping</p></Link>
           </HStack>
