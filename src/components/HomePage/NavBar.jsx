@@ -89,6 +89,7 @@ export default function Navbar() {
                 </Badge>
               </Button>
           <Button
+          onClick={()=>navigate("/signin")}
             as={'a'}
             fontSize={'sm'}
             fontWeight={400}
@@ -97,6 +98,7 @@ export default function Navbar() {
             Sign In
           </Button>
           <Button
+          onClick={()=>navigate("/signup")}
             display={{ base: 'none', md: 'inline-flex' }}
             fontSize={'sm'}
             fontWeight={600}

@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const LOGIN_USER = "LOGIN_USER";
 export const REGISTER_USER = "REGISTER_USER";
 
@@ -7,3 +9,21 @@ export const LOGIN_USER_ERROR = "LOGIN_USER_ERROR";
 export const loginUser = (user) => ({type: LOGIN_USER, payload: user});
 export const loginUserLoading = () => ({type: LOGIN_USER});
 export const loginUserError = () => ({type: LOGIN_USER});
+
+export const loginUserData = () => (dispatch) => {
+    try {
+        axios.post("http://localhost:8888/register")
+    } catch (error) {
+        
+    }
+}
+
+// axios
+//       .post("http://localhost:5000/cart", e)
+//       .then(() => {
+//         dispatch(addToCart());
+//         dispatch(getDataFromCart());
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });

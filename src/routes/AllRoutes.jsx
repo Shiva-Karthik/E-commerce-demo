@@ -1,4 +1,6 @@
 import { Routes, Route } from "react-router";
+import SignIn from "../components/Auhentication/SignIn";
+import SignUp from "../components/Auhentication/SignUp";
 import { CartPage } from "../components/Cart/CartPage";
 import Electronics from "../components/Categories/Electronics";
 import Furniture from "../components/Categories/Furniture";
@@ -19,6 +21,8 @@ const AllRoutes = () => {
           <Route exact path="/category/furniture" element={<Furniture/>}/>
           <Route exact path="/cart" element={<CartPage/>}/>
           <Route exact path="/checkout" element={<Checkout/>}/>
+          <Route exact path="/signup" element={<SignUp/>}/>
+          <Route exact path="/signin" element={<SignIn/>}/>
       </Routes>
       <Footer />
     </>
