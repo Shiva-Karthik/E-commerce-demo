@@ -6,17 +6,19 @@ export const REGISTER_USER = "REGISTER_USER";
 export const LOGIN_USER_LOADING = "LOGIN_USER_LOADING";
 export const LOGIN_USER_ERROR = "LOGIN_USER_ERROR";
 
-export const loginUser = (user) => ({type: LOGIN_USER, payload: user});
-export const loginUserLoading = () => ({type: LOGIN_USER});
-export const loginUserError = () => ({type: LOGIN_USER});
+export const loginUser = (user) => ({ type: LOGIN_USER, payload: user });
+export const loginUserLoading = () => ({ type: LOGIN_USER });
+export const loginUserError = () => ({ type: LOGIN_USER });
 
-export const loginUserData = () => (dispatch) => {
-    try {
-        axios.post("http://localhost:8888/register")
-    } catch (error) {
-        
-    }
-}
+export const loginUserData = (details) => (dispatch) => {
+  axios.post("http://localhost:8888/login", details).then((res) => {
+    console.log("res:", res);
+    dispatch(loginUser(res.data))
+    alert("Login Successfull");
+  }).catch((err) => {
+      alert("Incorrect Email or Password")
+  });
+};
 
 // axios
 //       .post("http://localhost:5000/cart", e)

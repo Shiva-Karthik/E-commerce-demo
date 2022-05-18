@@ -63,6 +63,7 @@ const cards = [
   "https://m.media-amazon.com/images/I/61od7gDIFEL._SX3000_.jpg",
   "https://m.media-amazon.com/images/I/61xeNFULzML._SX3000_.jpg",
   "https://m.media-amazon.com/images/I/81S9lHJGtqL._SX3000_.jpg",
+  "https://m.media-amazon.com/images/I/71te7JqNo7L._SX3000_.jpg"
 ];
 
 const LandingPage = () => {

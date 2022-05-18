@@ -19,6 +19,7 @@ const register = async (req, res) => {
     user = await userSchema.create(req.body);
 
     const token = newToken(user);
+    res.cookie("Bearer ", token, { httpOnly: true });
 
     res.send({ user, token });
   } catch (error) {
@@ -38,6 +39,7 @@ const login = async (req, res) => {
       return res.status(404).send({ message: "Incorrect Email or Password" });
     }    
     const token = newToken(user);
+    res.cookie("Bearer ", token, { httpOnly: true });
 
     res.send({ user, token });
  

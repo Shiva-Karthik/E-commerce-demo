@@ -14,38 +14,36 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { loginUserData } from "../../redux/users/action";
 
-export default function SignIn() {
-    const navigate = useNavigate()
-    const [details, setDetails] = useState({
-        email: "",
-        password: "",
-      });
+export default function SignIn({ authenticate }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [details, setDetails] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setDetails({
+      ...details,
+      [id]: value,
+    });
+  };
+
+ 
+  const handleSubmit = (e) => {
+    e.preventDefault();
     
-      const handleChange = (e) => {
-        const { id, value } = e.target;
-        setDetails({
-          ...details,
-          [id]: value,
-        });
-      };
-    
-      const handleSubmit = (e) => {
-        e.preventDefault();
-    
-        axios
-    
-          .post("http://localhost:8888/login", details)
-          .then((res) => {
-            console.log("res:", res);
-    
-            alert("Login Successfull");
-            if (res) {
-              navigate("/");
-            }
-          });
-      };
+    dispatch(loginUserData(details));
+    authenticate();
+    navigate("/");
+  };
+
+
   return (
     <Flex
       minH={"100vh"}
@@ -70,7 +68,12 @@ export default function SignIn() {
             <form onSubmit={handleSubmit}>
               <FormControl id="email" isRequired>
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" id="email" onChange={handleChange} aria-required/>
+                <Input
+                  type="email"
+                  id="email"
+                  onChange={handleChange}
+                  aria-required
+                />
               </FormControl>
               <FormControl id="password" isRequired>
                 <FormLabel>Password</FormLabel>
@@ -86,7 +89,7 @@ export default function SignIn() {
                   <Link color={"blue.400"}>Forgot password?</Link>
                 </Stack>
                 <Button
-                type="submit"
+                  type="submit"
                   bg={"blue.400"}
                   color={"white"}
                   _hover={{
@@ -95,6 +98,12 @@ export default function SignIn() {
                 >
                   Sign in
                 </Button>
+                <Text align={"center"}>
+                  Don't have an account?{" "}
+                  <Link onClick={() => navigate("/signup")} color={"blue.400"}>
+                    Sign Up
+                  </Link>
+                </Text>
               </Stack>
             </form>
           </Stack>

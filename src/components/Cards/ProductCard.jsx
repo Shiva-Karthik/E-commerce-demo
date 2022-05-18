@@ -15,12 +15,13 @@ import {
 import * as React from "react";
 import { Rating } from "./Rating";
 import { PriceTag } from "./PriceTag";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addDataToCart } from "../../redux/cart/action";
 import { useNavigate } from "react-router-dom";
 
 export const ProductCard = (props) => {
   const toast = useToast();
+  const { users } = useSelector((store) => store.users);
   const navigate = useNavigate();
   const { name, image, price, e, rating } = props;
   const dispatch = useDispatch();

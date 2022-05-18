@@ -50,6 +50,8 @@ export default function SignUp() {
         if (res) {
           navigate("/signin");
         }
+      }).catch((err) => {
+        alert("Email already registered")
       });
   };
 
@@ -127,7 +129,7 @@ export default function SignUp() {
               </Stack>
               <Stack pt={6}>
                 <Text align={"center"}>
-                  Already a user? <Link color={"blue.400"}>Login</Link>
+                  Already a user? <Link onClick={()=>navigate("/signin")} color={"blue.400"}>Login</Link>
                 </Text>
               </Stack>
             </form>

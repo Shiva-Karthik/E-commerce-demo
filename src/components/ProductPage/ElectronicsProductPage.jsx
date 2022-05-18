@@ -1,4 +1,3 @@
-
 import {
   Box,
   chakra,
@@ -22,29 +21,27 @@ import {
 } from "@chakra-ui/react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { MdLocalShipping } from "react-icons/md";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import {getSingleProductsData } from "../../redux/products/action";
+import { getSingleProductsData } from "../../redux/products/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { addDataToCart, addToCart } from "../../redux/cart/action";
 
-
 const ElectronicsProductPage = () => {
   // const [details, setDetails] = useState([]);
-  const {cart} = useSelector((store) => store.products)
+  const { cart } = useSelector((store) => store.products);
   const toast = useToast();
   const statuses = ["success"];
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
   const { products } = useSelector((store) => store.products);
+  const { users } = useSelector((store) => store.users);
 
   const getData = () => {
     dispatch(getSingleProductsData(id));
-    
   };
-
 
   const addCart = (products) => {
     dispatch(addDataToCart(products));
@@ -70,7 +67,6 @@ const ElectronicsProductPage = () => {
             align={"center"}
             w={"100%"}
             h={{ base: "100%", sm: "400px", lg: "800px" }}
-            
           />
         </Flex>
         <Stack spacing={{ base: 6, md: 10 }}>
@@ -175,16 +171,15 @@ const ElectronicsProductPage = () => {
             </Box>
           </Stack>
 
-      
           <Button
-          onClick={() =>
-            {addCart(products);
-            toast({
-              title: "Item added to cart",
-              status: "success",
-              isClosable: true,
-            })}
-          }
+            onClick={() => {
+              addCart(products);
+              toast({
+                title: "Item added to cart",
+                status: "success",
+                isClosable: true,
+              });
+            }}
             rounded={"none"}
             w={"full"}
             mt={8}

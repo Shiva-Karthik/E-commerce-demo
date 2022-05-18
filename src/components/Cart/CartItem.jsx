@@ -49,6 +49,7 @@ export const CartItem = (props) => {
       <CartProductMeta
         name={name}
         image={image}
+        id={id}
       />
 
       {/* Desktop */}

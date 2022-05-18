@@ -8,6 +8,7 @@ import { store } from "./redux/store";
 
 import { BrowserRouter } from "react-router-dom";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { AuthContextProvider } from "./context.api/auth";
 const colors = {
   brand: {
     900: "#1a365d",
@@ -16,12 +17,12 @@ const colors = {
   },
 };
 const breakpoints = {
-  sm: '320px',
-  md: '768px',
-  lg: '960px',
-  xl: '1200px',
-  '2xl': '1536px',
-}
+  sm: "320px",
+  md: "768px",
+  lg: "960px",
+  xl: "1200px",
+  "2xl": "1536px",
+};
 
 // 3. Extend the theme
 // const theme = extendTheme({  })
@@ -34,7 +35,9 @@ root.render(
     <BrowserRouter>
       <ChakraProvider theme={theme}>
         <ReduxProvider store={store}>
-          <App />
+          <AuthContextProvider>
+            <App />
+          </AuthContextProvider>
         </ReduxProvider>
       </ChakraProvider>
     </BrowserRouter>
