@@ -17,40 +17,36 @@ export const getProductFromCart = (product) => ({
   payload: product,
 });
 
-export const addDataToCart = (e) => async (dispatch) => {
-  try {
-    const { data } = await axios.get(`http://localhost:5000/cart/${e.id}`);
-    await axios.patch(`http://localhost:5000/cart/${e.id}`, {
-      qty: data.qty + 1,
+export const addDataToCart = (id) =>  (dispatch) => {
+  axios
+    .post("http://localhost:8888/cart", {
+      product_id: id,
+    })
+    .then(() => {
+      dispatch(addToCart());
+      dispatch(getDataFromCart());
+    })
+    .catch((err) => {
+      console.log(err);
     });
-  } catch (error) {
-    e.qty = 1;
-    axios
-      .post("http://localhost:5000/cart", e)
-      .then(() => {
-        dispatch(addToCart());
-        dispatch(getDataFromCart());
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-  return;
 };
-export const handleQty = (count, qty, id) => async (dispatch) => {
-  if (qty === count) {
-    return;
-  }
-  try {
-    await axios.patch(`http://localhost:5000/cart/${id}`, {
-      qty: count,
+export const updateToCart = (id,qty) =>  (dispatch) => {
+  axios
+    .patch(`http://localhost:8888/cart/${id}`, {
+      qty,
+    })
+    .then(() => {
+      dispatch(addToCart());
+      dispatch(getDataFromCart());
+    })
+    .catch((err) => {
+      console.log(err);
     });
-    dispatch(getDataFromCart());
-  } catch (error) {}
 };
+
 export const deleteDataToCart = (id) => (dispatch) => {
   axios
-    .delete(`http://localhost:5000/cart/${id}`)
+    .delete(`http://localhost:8888/cart/${id}`)
     .then((res) => {
       dispatch(removeFromCart());
       dispatch(getDataFromCart());
@@ -63,8 +59,8 @@ export const deleteDataToCart = (id) => (dispatch) => {
 export const getDataFromCart = () => async (dispatch) => {
   try {
     // dispatch(getProductsLoading());
-    const { data } = await axios.get("http://localhost:5000/cart");
-    // console.log('data:', data)
+    const { data } = await axios.get("http://localhost:8888/cart");
+    console.log("cartdata:", data);
     dispatch(getProductFromCart(data));
   } catch (error) {
     console.log(error);

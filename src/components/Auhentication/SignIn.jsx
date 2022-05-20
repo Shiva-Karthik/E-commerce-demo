@@ -18,7 +18,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginUserData } from "../../redux/users/action";
 
-export default function SignIn({ authenticate }) {
+export default function SignIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [details, setDetails] = useState({
@@ -39,7 +39,7 @@ export default function SignIn({ authenticate }) {
     e.preventDefault();
     
     dispatch(loginUserData(details));
-    authenticate();
+  
     navigate("/");
   };
 
@@ -54,9 +54,6 @@ export default function SignIn({ authenticate }) {
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
           <Heading fontSize={"4xl"}>Sign in to your account</Heading>
-          <Text fontSize={"lg"} color={"gray.600"}>
-            to enjoy all of our cool <Link color={"blue.400"}>features</Link> ✌️
-          </Text>
         </Stack>
         <Box
           rounded={"lg"}

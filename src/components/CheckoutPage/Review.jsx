@@ -22,7 +22,7 @@ export default function Review() {
   useEffect(() => {
     let sum = 0;
     for (let i = 0; i < cart.length; i++){
-      sum += cart[i].qty * cart[i].price
+      sum += cart[i].qty * cart[i].product_id.price
     }
     setTotalPrice(sum)
   },[cart])
@@ -35,8 +35,8 @@ export default function Review() {
         {cart.map((product) => (
         
           <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">₹ {product.price}{" x "}{product.qty}</Typography>
+            <ListItemText primary={product.product_id.name} secondary={product.desc} />
+            <Typography variant="body2">₹ {product.product_id.price}{" x "}{product.qty}</Typography>
           </ListItem>
    
         ))}

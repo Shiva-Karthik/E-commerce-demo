@@ -1,16 +1,26 @@
-import { Button, CloseButton, Flex, Link, Select, useColorModeValue } from '@chakra-ui/react'
-import * as React from 'react'
-import { PriceTag } from './PriceTag'
-import { CartProductMeta } from './CartProductMeta'
-import { useDispatch } from 'react-redux'
-import { deleteDataToCart, handleQty } from '../../redux/cart/action'
+import {
+  Button,
+  CloseButton,
+  Flex,
+  Link,
+  Select,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import * as React from "react";
+import { PriceTag } from "./PriceTag";
+import { CartProductMeta } from "./CartProductMeta";
+import { useDispatch } from "react-redux";
+import {
+  deleteDataToCart,
+  updateToCart,
+} from "../../redux/cart/action";
 
 const QuantitySelect = (props) => {
   return (
     <Select
       maxW="64px"
       aria-label="Select quantity"
-      focusBorderColor={useColorModeValue('blue.500', 'blue.200')}
+      focusBorderColor={useColorModeValue("blue.500", "blue.200")}
       {...props}
     >
       <option value="1">1</option>
@@ -18,58 +28,50 @@ const QuantitySelect = (props) => {
       <option value="3">3</option>
       <option value="4">4</option>
     </Select>
-  )
-}
+  );
+};
 
 export const CartItem = (props) => {
   const dispatch = useDispatch();
-  const {
-    id,
-    name,
-    qty,
-    image,
-    currency,
-    price,
-    onChangeQuantity,
-  } = props
+  const { _id, onChangeQuantity,currency, qty, product_id:{name, image, price, details} } = props;
 
-  const onClickDelete = (id) => {
-    dispatch(deleteDataToCart(id))
-  }
+
+  const onClickDelete = (_id) => {
+    dispatch(deleteDataToCart(_id));
+  };
 
   return (
     <Flex
       direction={{
-        base: 'column',
-        md: 'row',
+        base: "column",
+        md: "row",
       }}
       justify="space-between"
       align="center"
     >
-      <CartProductMeta
-        name={name}
-        image={image}
-        id={id}
-      />
+      <CartProductMeta name={name} image={image} id={_id} />
 
       {/* Desktop */}
       <Flex
         width="full"
         justify="space-between"
         display={{
-          base: 'none',
-          md: 'flex',
+          base: "none",
+          md: "flex",
         }}
       >
         <QuantitySelect
           value={qty}
           onChange={(e) => {
             onChangeQuantity?.(+e.currentTarget.value);
-            dispatch(handleQty(+e.currentTarget.value, qty, id))
+            dispatch(updateToCart(_id, +e.currentTarget.value));
           }}
         />
-        <PriceTag price={price}  />
-        <CloseButton aria-label={`Delete ${name} from cart`} onClick={() =>onClickDelete(id)} />
+        <PriceTag price={price} />
+        <CloseButton
+          aria-label={`Delete ${name} from cart`}
+          onClick={() => onClickDelete(_id)}
+        />
       </Flex>
 
       {/* Mobile */}
@@ -79,20 +81,20 @@ export const CartItem = (props) => {
         width="full"
         justify="space-between"
         display={{
-          base: 'flex',
-          md: 'none',
+          base: "flex",
+          md: "none",
         }}
       >
-        <Button onClick={() =>onClickDelete(id)} >Remove</Button>
+        <Button onClick={() => onClickDelete(_id)}>Remove</Button>
         <QuantitySelect
           value={qty}
           onChange={(e) => {
-            onChangeQuantity?.(+e.currentTarget.value)
-            dispatch(handleQty(+e.currentTarget.value, qty, id))
+            onChangeQuantity?.(+e.currentTarget.value);
+            dispatch(updateToCart(_id, +e.currentTarget.value));
           }}
         />
         <PriceTag price={price} currency={currency} />
       </Flex>
     </Flex>
-  )
-}
+  );
+};

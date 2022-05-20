@@ -19,6 +19,7 @@ import { Link } from "react-router-dom";
 export const CartPage = () => {
   const dispatch = useDispatch();
   const {cart} = useSelector((store) => store.cart)
+  console.log('cart:', cart)
 
   
   const getData = () => {
@@ -71,8 +72,8 @@ export const CartPage = () => {
           </Heading>
 
           <Stack spacing="6">
-            {cart.map((item) => (
-              <CartItem key={item.id} {...item} />
+            {cart.map((item,i) => (
+              <CartItem key={i} {...item} />
             ))}
           </Stack>
         </Stack>

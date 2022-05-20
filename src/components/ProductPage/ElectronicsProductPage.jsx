@@ -37,14 +37,13 @@ const ElectronicsProductPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { products } = useSelector((store) => store.products);
-  const { users } = useSelector((store) => store.users);
 
   const getData = () => {
     dispatch(getSingleProductsData(id));
   };
 
-  const addCart = (products) => {
-    dispatch(addDataToCart(products));
+  const addCart = (id) => {
+    dispatch(addDataToCart(id));
   };
 
   useEffect(() => {
@@ -173,7 +172,7 @@ const ElectronicsProductPage = () => {
 
           <Button
             onClick={() => {
-              addCart(products);
+              addCart(id);
               toast({
                 title: "Item added to cart",
                 status: "success",

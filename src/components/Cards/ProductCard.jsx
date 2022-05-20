@@ -18,15 +18,15 @@ import { PriceTag } from "./PriceTag";
 import { useDispatch, useSelector } from "react-redux";
 import { addDataToCart } from "../../redux/cart/action";
 import { useNavigate } from "react-router-dom";
+import { Link as Mylink } from "react-router-dom";
 
 export const ProductCard = (props) => {
   const toast = useToast();
-  const { users } = useSelector((store) => store.users);
   const navigate = useNavigate();
-  const { name, image, price, e, rating } = props;
+  const { name, image, price, e } = props;
   const dispatch = useDispatch();
-  const addCart = (el) => {
-    dispatch(addDataToCart(el));
+  const addCart = (id) => {
+    dispatch(addDataToCart(id));
   };
   return (
     <Stack
@@ -38,7 +38,7 @@ export const ProductCard = (props) => {
     >
       <Box position="relative">
         <AspectRatio ratio={4 / 3}>
-          <Link onClick={() => navigate(`/category/electronics/${e.id}`)}>
+          <Mylink to={`/category/electronics/${e._id}`}>
             <Image
               src={image}
               alt={name}
@@ -49,7 +49,20 @@ export const ProductCard = (props) => {
                 md: "xl",
               })}
             />
-          </Link>
+          </Mylink>
+
+          {/* <Link onClick={() => navigate(`/category/electronics/${e.id}`)}>
+            <Image
+              src={image}
+              alt={name}
+              draggable="false"
+              fallback={<Skeleton />}
+              borderRadius={useBreakpointValue({
+                base: "md",
+                md: "xl",
+              })}
+            />
+          </Link> */}
         </AspectRatio>
       </Box>
       <Stack>
@@ -74,7 +87,7 @@ export const ProductCard = (props) => {
           colorScheme="blue"
           isFullWidth
           onClick={() => {
-            addCart(e);
+            addCart(e._id);
             toast({
               title: "Item added to cart",
               status: "success",

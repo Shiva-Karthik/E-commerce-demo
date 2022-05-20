@@ -19,7 +19,7 @@ import { BsCartFill } from "react-icons/bs";
 import { Center, Flex } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../redux/users/action";
-import { getProductFromCart } from "../../redux/cart/action";
+import { deleteDataToCart, getProductFromCart } from "../../redux/cart/action";
 import axios from "axios";
 
 // function Copyright() {
@@ -66,7 +66,7 @@ export default function Checkout() {
 
   const clearCart = () => {
     if (activeStep === steps.length - 1) {
-      axios.patch("http://localhost:5000/cart",[])
+      dispatch(deleteDataToCart("clearCart"))
       // dispatch(getProductFromCart([]));
     }
   };

@@ -15,11 +15,20 @@ app.post("/login", login);
 
 app.use("/users", userController);
 
+const cartController = require("./backend/controllers/cart.controller");
+const productController = require("./backend/controllers/products.controller");
+
+app.use("/cart", cartController);
+app.use("/products", productController);
 const connect = require("./backend/configs/db");
 const PORT = 8888;
+
+
 app.listen(PORT, async () => {
   await connect();
   console.log("Listening on port 8888");
 });
+
+
 
 // https://fierce-hollows-91031.herokuapp.com/ | https://git.heroku.com/fierce-hollows-91031.git

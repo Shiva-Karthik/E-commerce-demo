@@ -34,7 +34,7 @@ export const CartOrderSummary = () => {
   useEffect(() => {
     let sum = 0;
     for (let i = 0; i < cart.length; i++){
-      sum += cart[i].qty * cart[i].price
+      sum += cart[i].qty * cart[i].product_id.price
     }
     setTotalPrice(sum)
   },[cart])

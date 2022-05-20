@@ -15,7 +15,7 @@ export const getProductsData = () => async (dispatch) => {
   try {
     dispatch(getProductsLoading());
     const { data } = await axios.get(
-      "http://localhost:5000/electronics"
+      "http://localhost:8888/products"
     );
     // console.log('data:', data)
     dispatch(getProducts(data));
@@ -27,7 +27,7 @@ export const getSingleProductsData = (id) => async (dispatch) => {
   try {
     dispatch(getProductsLoading());
     const { data } = await axios.get(
-      `http://localhost:5000/electronics/${id}`
+      `http://localhost:8888/products/${id}`
     );
     // console.log('data:', data)
     dispatch(getSingleProducts(data));

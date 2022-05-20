@@ -35,7 +35,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { BsCartFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUserData } from "../../redux/users/action";
+import { loginUser, loginUserData } from "../../redux/users/action";
 
 export default function Navbar({logout}) {
   const { isOpen, onToggle } = useDisclosure();
@@ -43,10 +43,10 @@ export default function Navbar({logout}) {
   const dispatch = useDispatch();
   const { cart } = useSelector((store) => store.cart);
   const { users } = useSelector((store) => store.users);
-  console.log("users:", users);
-
+  console.log('users:', users)
   const clearUser = () => {
-    dispatch(loginUserData(null));
+    localStorage.removeItem('user')
+    dispatch(loginUser({}))
   }
 
   return (
@@ -105,7 +105,7 @@ export default function Navbar({logout}) {
           spacing={6}
         >
           
-          {users.length === 0 ? (
+          {!users._id ? (
             <>
               <Button
                 onClick={() => navigate("/signin")}
@@ -125,12 +125,12 @@ export default function Navbar({logout}) {
           ) : (
             <Menu>
               <MenuButton as={Button} >
-                Hello, {users.user.firstName} <ChevronDownIcon/>
+                Hello, {users.firstName} <ChevronDownIcon/>
               </MenuButton>
               
               <MenuList>
                 <MenuItem>Your Orders</MenuItem>
-                <MenuItem onClick={logout}>Logout</MenuItem>
+                <MenuItem onClick={clearUser}>Logout</MenuItem>
               </MenuList>
             </Menu>
           )}

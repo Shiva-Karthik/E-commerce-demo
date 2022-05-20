@@ -4,9 +4,9 @@ import {
   LOGIN_USER_LOADING,
   REGISTER_USER,
 } from "./action";
-
+let users = JSON.parse(localStorage.getItem("user")) || {users:{}};
 const initState = {
-  users: [],
+  users,
   loading: false,
   error: false,
 };

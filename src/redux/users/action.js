@@ -12,8 +12,8 @@ export const loginUserError = () => ({ type: LOGIN_USER });
 
 export const loginUserData = (details) => (dispatch) => {
   axios.post("http://localhost:8888/login", details).then((res) => {
-    console.log("res:", res);
-    dispatch(loginUser(res.data))
+    localStorage.setItem("user", JSON.stringify(res.data.user))
+    dispatch(loginUser(res.data.user))
     alert("Login Successfull");
   }).catch((err) => {
       alert("Incorrect Email or Password")

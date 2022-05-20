@@ -124,7 +124,7 @@ const Electronics = () => {
               return (
 
                   <ProductCard
-                    key={e.id}
+                    key={e._id}
                     name={e.name}
                     price={e.price}
                     image={e.image}
