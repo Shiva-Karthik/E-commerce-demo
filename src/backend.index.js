@@ -21,7 +21,7 @@ const productController = require("./backend/controllers/products.controller");
 app.use("/cart", cartController);
 app.use("/products", productController);
 const connect = require("./backend/configs/db");
-const PORT = 8888;
+const PORT = process.env.PORT || 8888;
 
 
 app.listen(PORT, async () => {
