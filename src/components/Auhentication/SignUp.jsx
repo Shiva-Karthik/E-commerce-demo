@@ -42,7 +42,7 @@ export default function SignUp() {
 
     axios
 
-      .post("http://localhost:8888/register", details)
+      .post("https://secret-castle-10519.herokuapp.com", details)
       .then((res) => {
         console.log("res:", res);
 
