@@ -11,7 +11,7 @@ export const loginUserLoading = () => ({ type: LOGIN_USER });
 export const loginUserError = () => ({ type: LOGIN_USER });
 
 export const loginUserData = (details) => (dispatch) => {
-  axios.post("http://localhost:8888/login", details).then((res) => {
+  axios.post("https://secret-castle-10519.herokuapp.com/login", details).then((res) => {
     localStorage.setItem("user", JSON.stringify(res.data.user))
     dispatch(loginUser(res.data.user))
     alert("Login Successfull");

@@ -19,7 +19,7 @@ export const getProductFromCart = (product) => ({
 
 export const addDataToCart = (id) =>  (dispatch) => {
   axios
-    .post("http://localhost:8888/cart", {
+    .post("https://secret-castle-10519.herokuapp.com/cart", {
       product_id: id,
     })
     .then(() => {
@@ -32,7 +32,7 @@ export const addDataToCart = (id) =>  (dispatch) => {
 };
 export const updateToCart = (id,qty) =>  (dispatch) => {
   axios
-    .patch(`http://localhost:8888/cart/${id}`, {
+    .patch(`https://secret-castle-10519.herokuapp.com/cart/${id}`, {
       qty,
     })
     .then(() => {
@@ -46,7 +46,7 @@ export const updateToCart = (id,qty) =>  (dispatch) => {
 
 export const deleteDataToCart = (id) => (dispatch) => {
   axios
-    .delete(`http://localhost:8888/cart/${id}`)
+    .delete(`https://secret-castle-10519.herokuapp.com/cart/${id}`)
     .then((res) => {
       dispatch(removeFromCart());
       dispatch(getDataFromCart());
@@ -59,7 +59,7 @@ export const deleteDataToCart = (id) => (dispatch) => {
 export const getDataFromCart = () => async (dispatch) => {
   try {
     // dispatch(getProductsLoading());
-    const { data } = await axios.get("http://localhost:8888/cart");
+    const { data } = await axios.get("https://secret-castle-10519.herokuapp.com/cart");
     console.log("cartdata:", data);
     dispatch(getProductFromCart(data));
   } catch (error) {
