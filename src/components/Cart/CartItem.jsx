@@ -2,7 +2,6 @@ import {
   Button,
   CloseButton,
   Flex,
-  Link,
   Select,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -14,7 +13,6 @@ import {
   deleteDataToCart,
   updateToCart,
 } from "../../redux/cart/action";
-import { useParams } from "react-router-dom";
 
 const QuantitySelect = (props) => {
   return (

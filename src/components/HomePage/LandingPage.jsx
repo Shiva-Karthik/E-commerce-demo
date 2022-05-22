@@ -5,7 +5,6 @@ import {
   Icon,
   IconButton,
   Image,
-  SimpleGrid,
   Skeleton,
   useBreakpointValue,
   useColorModeValue,
@@ -14,35 +13,18 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import Slider from "react-slick";
 import { useState } from "react";
 import { useEffect } from "react";
-import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
 import { getProductsData } from "../../redux/products/action";
-import { ProductCard } from "../Cards/ProductCard";
 import { Heading } from "@chakra-ui/react";
-import { Grid, GridItem } from "@chakra-ui/react";
 import {
-  Menu,
-  MenuButton,
-  MenuList,
-  Button,
-  MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
-  Spinner,
   Center,
-  Input,
   Flex,
-  Container,
-  Select,
   Stack,
-  Text,
   Link,
 } from "@chakra-ui/react";
 
 import { FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const settings = {
   dots: true,

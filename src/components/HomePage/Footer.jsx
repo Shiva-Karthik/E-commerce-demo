@@ -1,14 +1,4 @@
-// import React from 'react'
 
-// const Footer = () => {
-//   return (
-//     <div>Footer</div>
-//   )
-// }
-
-// export default Footer
-
-import { ReactNode } from "react";
 import {
   Box,
   Container,

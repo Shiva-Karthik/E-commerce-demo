@@ -1,7 +1,6 @@
-import { Box, HStack, Icon, useColorModeValue } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import * as React from 'react'
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
-import { FaStar } from 'react-icons/fa'
 
 export const Rating = ({ rating, numReviews }) => {
   return (

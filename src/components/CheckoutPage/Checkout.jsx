@@ -18,9 +18,7 @@ import { Link } from "react-router-dom";
 import { BsCartFill } from "react-icons/bs";
 import { Center, Flex } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../../redux/users/action";
-import { deleteDataToCart, getProductFromCart } from "../../redux/cart/action";
-import axios from "axios";
+import { deleteDataToCart } from "../../redux/cart/action";
 
 // function Copyright() {
 //   return (

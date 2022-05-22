@@ -6,23 +6,23 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
 export default function AddressForm() {
-  const [shippingData, setShippingData] = React.useState({
-    name: "",
-    address: "",
-  });
+  // const [shippingData, setShippingData] = React.useState({
+  //   name: "",
+  //   address: "",
+  // });
 
-  const handleInputChange = (e) => {
-    const { id, value } = e.target.value;
-    setShippingData({
-      ...shippingData,
-      [id]: value,
-    });
-  };
+  // const handleInputChange = (e) => {
+  //   const { id, value } = e.target.value;
+  //   setShippingData({
+  //     ...shippingData,
+  //     [id]: value,
+  //   });
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setShippingData()
-  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setShippingData()
+  // }
 
   return (
     <React.Fragment>
