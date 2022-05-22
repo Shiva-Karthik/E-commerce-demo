@@ -64,7 +64,6 @@
 2. Install NPM packages
    ```sh
    npm install
-   <p align="right">(<a href="#top">back to top</a>)</p>
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -76,7 +75,7 @@
 - User Authentication
 - Add to cart functionality when two same items added to increase the quantity 
 - Authenticated routes
-- Project alert messages
+- Proper alert messages
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
