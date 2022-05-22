@@ -19,7 +19,6 @@ import { Link } from "react-router-dom";
 export const CartPage = () => {
   const dispatch = useDispatch();
   const {cart} = useSelector((store) => store.cart)
-  console.log('cart:', cart)
 
   
   const getData = () => {

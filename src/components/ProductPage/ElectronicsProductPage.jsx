@@ -29,11 +29,7 @@ import { useState } from "react";
 import { addDataToCart, addToCart } from "../../redux/cart/action";
 
 const ElectronicsProductPage = () => {
-  // const [details, setDetails] = useState([]);
-  const { cart } = useSelector((store) => store.products);
   const toast = useToast();
-  const statuses = ["success"];
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
   const { products } = useSelector((store) => store.products);

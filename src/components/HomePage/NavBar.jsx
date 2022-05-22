@@ -43,7 +43,6 @@ export default function Navbar({logout}) {
   const dispatch = useDispatch();
   const { cart } = useSelector((store) => store.cart);
   const { users } = useSelector((store) => store.users);
-  console.log('users:', users)
   const clearUser = () => {
     localStorage.removeItem('user')
     dispatch(loginUser({}))

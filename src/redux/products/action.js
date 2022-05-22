@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getDataFromCart } from "../cart/action";
 
 export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_SINGLE_PRODUCTS = "GET_SINGLE_PRODUCTS";
@@ -19,6 +20,7 @@ export const getProductsData = () => async (dispatch) => {
     );
     // console.log('data:', data)
     dispatch(getProducts(data));
+    dispatch(getDataFromCart())
   } catch (error) {
     dispatch(getProductsError(error));
   }

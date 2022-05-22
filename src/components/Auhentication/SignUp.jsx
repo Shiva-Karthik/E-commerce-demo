@@ -44,7 +44,6 @@ export default function SignUp() {
 
       .post("https://secret-castle-10519.herokuapp.com/register", details)
       .then((res) => {
-        console.log("res:", res);
 
         alert("Sign up Successfull. Please Sign in");
         if (res) {

@@ -14,6 +14,7 @@ import {
   deleteDataToCart,
   updateToCart,
 } from "../../redux/cart/action";
+import { useParams } from "react-router-dom";
 
 const QuantitySelect = (props) => {
   return (
@@ -33,7 +34,7 @@ const QuantitySelect = (props) => {
 
 export const CartItem = (props) => {
   const dispatch = useDispatch();
-  const { _id, onChangeQuantity,currency, qty, product_id:{name, image, price, details} } = props;
+  const { _id, onChangeQuantity,currency, qty } = props;
 
 
   const onClickDelete = (_id) => {
@@ -49,7 +50,7 @@ export const CartItem = (props) => {
       justify="space-between"
       align="center"
     >
-      <CartProductMeta name={name} image={image} id={_id} />
+      <CartProductMeta name={props.product_id.name} image={props.product_id.image} id={props.product_id._id} />
 
       {/* Desktop */}
       <Flex
@@ -67,9 +68,9 @@ export const CartItem = (props) => {
             dispatch(updateToCart(_id, +e.currentTarget.value));
           }}
         />
-        <PriceTag price={price} />
+        <PriceTag price={props.product_id.price} />
         <CloseButton
-          aria-label={`Delete ${name} from cart`}
+          aria-label={`Delete ${props.product_id.name} from cart`}
           onClick={() => onClickDelete(_id)}
         />
       </Flex>
@@ -93,7 +94,7 @@ export const CartItem = (props) => {
             dispatch(updateToCart(_id, +e.currentTarget.value));
           }}
         />
-        <PriceTag price={price} currency={currency} />
+        <PriceTag price={props.product_id.price} currency={currency} />
       </Flex>
     </Flex>
   );

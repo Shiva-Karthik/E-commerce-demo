@@ -60,7 +60,6 @@ export const getDataFromCart = () => async (dispatch) => {
   try {
     // dispatch(getProductsLoading());
     const { data } = await axios.get("https://secret-castle-10519.herokuapp.com/cart");
-    console.log("cartdata:", data);
     dispatch(getProductFromCart(data));
   } catch (error) {
     console.log(error);
