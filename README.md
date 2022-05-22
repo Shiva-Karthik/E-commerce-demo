@@ -36,7 +36,7 @@
   <img src="/public/images/cartpage.png"/>
 
 - Checkout pages
-  <img src="/public/images/checkoutpages.png"/>
+  <img src="/public/images/checkoutpages.jpeg"/>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
