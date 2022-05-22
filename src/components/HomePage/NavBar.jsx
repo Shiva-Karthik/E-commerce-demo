@@ -21,10 +21,6 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -35,7 +31,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { BsCartFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser, loginUserData } from "../../redux/users/action";
+import { loginUser } from "../../redux/users/action";
 
 export default function Navbar({logout}) {
   const { isOpen, onToggle } = useDisclosure();
@@ -108,12 +104,11 @@ export default function Navbar({logout}) {
             <>
               <Button
                 onClick={() => navigate("/signin")}
-                display={{ base: "none", md: "inline-flex" }}
+                display={{ base: "inline-flex", md: "inline-flex" }}
                 fontSize={"sm"}
                 fontWeight={600}
                 color={"white"}
                 bg={"pink.400"}
-                href={"#"}
                 _hover={{
                   bg: "pink.300",
                 }}

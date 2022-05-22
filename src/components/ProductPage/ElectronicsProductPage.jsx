@@ -1,32 +1,25 @@
 import {
   Box,
-  chakra,
   Container,
   Stack,
   Text,
   Image,
   Flex,
-  VStack,
   Button,
   Heading,
   SimpleGrid,
   StackDivider,
   useColorModeValue,
-  VisuallyHidden,
   List,
   ListItem,
   useToast,
-  Wrap,
-  WrapItem,
 } from "@chakra-ui/react";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { MdLocalShipping } from "react-icons/md";
-import { useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getSingleProductsData } from "../../redux/products/action";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { addDataToCart, addToCart } from "../../redux/cart/action";
+import { addDataToCart } from "../../redux/cart/action";
 
 const ElectronicsProductPage = () => {
   const toast = useToast();
