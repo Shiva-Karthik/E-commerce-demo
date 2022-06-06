@@ -10,13 +10,13 @@ import { userReducer } from "./users/reducer";
 const rootReducer = combineReducers({
   products: productReducer,
   users: userReducer,
-  cart: cartReducer
+  cart: cartReducer,
 });
 
-export const store = createStore( rootReducer,
-  compose(applyMiddleware(thunk),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
-
-
-
-
+export const store = createStore(
+  rootReducer,
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
+);

@@ -7,6 +7,8 @@ import {
   MenuOptionGroup,
   MenuDivider,
   Box,
+  Center,
+  Spinner,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -17,7 +19,7 @@ import { ProductGrid } from "../Cards/ProductGrid";
 
 const Electronics = () => {
   const dispatch = useDispatch();
-  const { products } = useSelector((store) => store.products);
+  const { products, loading } = useSelector((store) => store.products);
   const [filterState, setFilterState] = useState({ parameter: "", value: "" });
   const handleSort = (parameter, value) => {
     setFilterState({ parameter: parameter, value: value });
@@ -30,7 +32,17 @@ const Electronics = () => {
     getData();
   }, []);
 
-  return (
+  return loading ? (
+    <Center h="600px">
+      <Spinner
+        thickness="4px"
+        speed="0.65s"
+        emptyColor="gray.200"
+        color="blue.500"
+        size="xl"
+      />
+    </Center>
+  ) : (
     <Box>
       {/* <Heading>Top Picks</Heading> */}
       <Box p={10}>
