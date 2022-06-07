@@ -4,7 +4,6 @@ import {
   Heading,
   HStack,
   Image,
-  // Link,
   Stack,
 } from "@chakra-ui/react";
 import * as React from "react";
@@ -66,7 +65,7 @@ export const CartPage = () => {
           flex="2"
         >
           <Heading fontSize="2xl" fontWeight="extrabold">
-            {cart.length > 0 ? "Shopping Cart" : <Box><Image draggable={false} src="https://sethisbakery.com/assets/website/images/empty-cart.png"/></Box>}
+            {cart.length > 0 ? "Shopping Cart" : <Box><Image draggable={false} src="https://shop.millenniumbooksource.com/static/images/cart1.png" alt="No Items in Cart"/></Box>}
           </Heading>
 
           <Stack spacing="6">
